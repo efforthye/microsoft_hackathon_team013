@@ -1,7 +1,8 @@
 import styles from './styles.module.scss';
-import React, { useState, ChangeEvent, useEffect } from 'react';
+import { useState, ChangeEvent, useEffect } from 'react';
 import { BsQuestionSquareFill } from 'react-icons/bs';
 import { BsFillChatLeftTextFill } from 'react-icons/bs';
+import axios from 'axios';
 
 const CursorSVG = () => {
   return (
@@ -15,28 +16,40 @@ const App = () => {
   const title = '전자 정보 표준 프레임워크 search AI';
 
   const [inputValue, setInputValue] = useState<string>('');
-
-  // input 값이 변경될 때마다 호출되는 함수
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value); // 입력값을 state에 반영합니다.
-  };
-
-  const text = `webmaster계정에 로그인이 되지 않는 이유는\nwebmaster에게 권한이 없기 때문입니다.
-
-해결방법으로는\n
-
-1. INSERT를 이용하여 webmaster에게 권한을 줍니다.
-INSERT INTO COMTNEMPLYRSCRTYESTBS (SCRTY_DTRMN_TRGET_ID, MBER_TY_CODE, AUTHOR_CODE) VALUES ('USRCNFRM_99999999999', 'USR03', 'ROLE_ADMIN');
-
-2.TEST1로 로그인하신 뒤
-보안> 70. 권한그룹관리에서 webmaster에게 관리자 권한을 주신 뒤 등록을 해주시면 됩니다.
-
-추후 차기버전에 반영하도록 하겠습니다.
-감사합니다.`;
-
-  const [chatHistory, setChatHistory] = useState([{ user: 'AI', content: text }]);
+  const [question, setQuestion] = useState<string>('');
+  const [chatHistory, setChatHistory] = useState([{ user: 'AI', content: '' }]);
   const [displayResponse, setDisplayResponse] = useState('');
   const [completedTyping, setCompletedTyping] = useState(true);
+
+  // input 값이 변경될 때마다 호출되는 함수
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => setInputValue(event.target.value); // 입력값을 state에 반영합니다.
+
+  const onClick = async () => {
+    setQuestion(inputValue);
+    setInputValue('');
+
+    setChatHistory([...chatHistory, { user: 'AI', content: 'AI가 답변중입니다...' }]);
+
+    const englishResult = await axios.get('http://43.201.38.232:8080/api/test', {
+      params: {
+        text: inputValue,
+      },
+    });
+
+    const englishResultData = englishResult.data.data.choices.map((choice: any) => choice.message.content).join('\n');
+
+    const res = (
+      await axios.get('http://43.201.38.232:8080/api/translate', {
+        params: {
+          text: englishResultData,
+        },
+      })
+    ).data;
+
+    const data = await res.data[0].translations.map((choice: any) => choice.text).join('\n');
+    const resultText = `안녕하세요.\n표준프레임워크센터 AI입니다.\n\n${data}\n\n감사합니다.`;
+    setChatHistory([...chatHistory, { user: 'User', content: resultText }]);
+  };
 
   useEffect(() => {
     setCompletedTyping(false);
@@ -69,30 +82,37 @@ INSERT INTO COMTNEMPLYRSCRTYESTBS (SCRTY_DTRMN_TRGET_ID, MBER_TY_CODE, AUTHOR_CO
         <br />
         <div className={styles.inputContainer}>
           {/* 메인 */}
-          <div className={styles.board_detail03}>
-            <div className={styles.title}>표준프레임워크 개발환경 및 실행환경 JDK 버전</div>
-            <div className={styles.info}></div>
-            <div className={styles.article}>
-              <div className={styles.questionbox}>
-                <h4 className={styles.question}>
-                  <BsQuestionSquareFill size={40} color='orange' className={styles.icon} />
+          <div className={styles.title}>표준프레임워크 개발환경 및 실행환경 JDK 버전</div>
+          <div className={styles.article}>
+            <div className={styles.questionbox}>
+              <div className={styles.icon}>
+                <BsQuestionSquareFill size={40} color='orange' className={styles.icon} />
+              </div>
+              <input
+                type='text'
+                value={inputValue}
+                onChange={handleChange}
+                placeholder='여기에 입력하세요'
+                className={styles.inputField}
+              />
 
-                  <input
-                    type='text'
-                    value={inputValue}
-                    onChange={handleChange}
-                    placeholder='여기에 입력하세요'
-                    className={styles.input_field}
-                  />
-                </h4>
-              </div>
-              <div className={styles.answer}>
+              <button className={styles.submit} onClick={onClick} disabled={!inputValue || !completedTyping}>
+                {'>'}
+              </button>
+            </div>
+            <div className={styles.yourQuestionContainer}>
+              <div className={styles.icon} />
+              <div className={styles.yourQuestion}>{question}</div>
+            </div>
+            <hr className={styles.line} />
+            <div className={styles.answer}>
+              <div className={styles.icon}>
                 <BsFillChatLeftTextFill size={40} color='green' />
-                <span className={styles.displayResponse}>
-                  {displayResponse}
-                  {!completedTyping && <CursorSVG />}
-                </span>
               </div>
+              <span className={styles.displayResponse}>
+                {displayResponse}
+                {!completedTyping && <CursorSVG />}
+              </span>
             </div>
           </div>
         </div>

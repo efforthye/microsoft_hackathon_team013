@@ -27,30 +27,28 @@
   display: flex;
   flex-direction: column;
   font-family: 'Roboto', sans-serif;
-}
-
-.container {
   padding-left: 10%; /* 왼쪽 여백 추가 */
   padding-right: 10%; /* 오른쪽 여백 추가 */
 }
+
 .pageTitle {
-  margin: 40px 0;
+  margin-top: 40px;
   font-family: 'Roboto', sans-serif;
   font-size: 2rem;
   color: #000;
   text-align: center;
 }
 
-//
-
-.board_detail03 {
-  border-top: 3px solid #393939;
-  font-family: 'NotoSans', sans-serif;
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: #31333e;
+  margin: 16px 0 32px 0;
 }
 
-.board_detail03 .title {
-  padding: 20px;
-  border-bottom: 1px solid #393939;
+.title {
+  width: 100%;
+  padding: 12px;
   color: #222;
   font-size: 20px;
   text-align: center;
@@ -58,38 +56,80 @@
   unicode-bidi: isolate;
 }
 
-.board_detail03 .info {
+.info {
   padding: 17px 0 19px 0;
-  border-bottom: 1px solid #c9c9c9;
   font-size: 0;
   text-align: center;
   background: #f2f2f2;
 }
 
-.board_detail03 .article .questionbox {
-  margin-bottom: 0;
-}
-
-.board_detail03 .article .questionbox .question {
+.article {
   position: relative;
   padding: 48px 20px 48px 100px;
-  border-bottom: 1px solid #c9c9c9;
   color: #222;
   font-size: 16px;
   font-weight: 700;
 }
 
-.board_detail03 .article .answer {
+.questionbox {
+  display: grid;
+  grid-template-columns: 1fr 6fr 1fr;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+}
+
+.inputField {
+  padding: 0 12px;
+  margin-right: 28px;
+  width: 90%;
+  height: 40px;
+  outline: none;
+  border-radius: 12px;
+  background-color: #f0f2f6;
+  border: 1px solid #f0f2f6;
+  resize: none;
+  color: #31333e;
+}
+
+.submit {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  padding: 4px;
+  background-color: #393939;
+  color: white;
+  cursor: pointer;
+  border: none;
+  font-size: 20px;
+}
+
+.yourQuestionContainer {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  margin-bottom: 24px;
+}
+
+.answer {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.article {
   position: relative;
   padding: 48px 0 0 100px;
   font-size: 16px;
   line-height: 24px;
-}
-
-.input_field {
-  border: none; /* 테두리 제거 */
-  padding: 10px; /* 내부 여백 추가 */
-  font-size: 16px; /* 폰트 크기 설정 */
-  border-radius: 8px; /* 테두리 둥글게 만들기 */
-  margin-bottom: 10px; /* 아래 여백 추가 */
 }
