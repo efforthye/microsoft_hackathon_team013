@@ -30,7 +30,7 @@ const App = () => {
 
     setChatHistory([...chatHistory, { user: 'AI', content: 'AI가 답변중입니다...' }]);
 
-    const englishResult = await axios.get('http://43.201.38.232:8080/api/test', {
+    const englishResult = await axios.get('http://13.124.93.106:8080/api/test', {
       params: {
         text: inputValue,
       },
@@ -39,7 +39,7 @@ const App = () => {
     const englishResultData = englishResult.data.data.choices.map((choice: any) => choice.message.content).join('\n');
 
     const res = (
-      await axios.get('http://43.201.38.232:8080/api/translate', {
+      await axios.get('http://13.124.93.106:8080/api/translate', {
         params: {
           text: englishResultData,
         },
