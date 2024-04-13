@@ -1,53 +1,8 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.text {
-  color: red;
-  font-size: 20px;
-}
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -55,20 +10,37 @@
   display: flex;
   flex-direction: column;
   font-family: 'Roboto', sans-serif;
-  background-color: white; // 파스텔톤의 분홍색 배경
+  background-color: white;
   width: 100%; // 또는 다른 값으로 설정할 수 있습니다.
-  max-width: 600px; // 최대 너비
   margin-bottom: 20px; // 박스 사이의 간격
 }
 
 .pageTitle {
-  margin-bottom: 20px;
+  margin: 40px 0;
   font-family: 'Roboto', sans-serif;
   font-size: 2rem;
-  color: #333;
+  color: #000;
+  text-align: center;
+}
+
+.description {
+  margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  color: #111;
+  white-space: pre-wrap;
+  text-align: center;
+}
+
+.hr {
+  width: 80%;
+  height: 1px;
+  background-color: #111;
+  margin-bottom: 20px;
 }
 
 .inputContainer {
+  padding: 8px 240px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -108,14 +80,26 @@
   border-radius: 16px;
   font-size: 18px;
   text-align: center;
+
+  &:hover {
+    background-color: #282c34;
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: auto;
+  }
 }
 
 .textAreaField {
   height: 150px;
 }
 
-.button:hover {
-  background-color: #282c34;
+.resultContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .imageContainer {

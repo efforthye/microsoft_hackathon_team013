@@ -8,9 +8,12 @@ interface MessageData {
 }
 
 const App = () => {
+  const title = '장애인을 위한 정부 웹 콘텐츠 접근성 지침 이행 AI 검사기';
+  const description = `웹페이지 링크 혹은 HTML 태그를 입력하면 웹 콘텐츠 접근성 지침 이행 여부를 확인하실 수 있습니다.\n또한, 해당 페이지 내에 포함된 이미지의 설명을 받아보실 수 있습니다.`;
   const code = `<div className='App'>
   <div className={styles.text}>Main page</div>
   <CopyBlock text={code} language={language} showLineNumbers={props.showLineNumbers} wrapLines />
+  <div className={styles.text}>Main page Main page hihihihihih hihi hi </div>
   <div className={styles.text}>Main page</div>
   <img src={logo} alt='logo' />
   <div className={styles.text}>Main page</div>
@@ -52,7 +55,10 @@ const App = () => {
   return (
     <div className={styles.container}>
       {/* 큰 페이지 제목 */}
-      <h1 className={styles.pageTitle}>Team 031</h1>
+      <h1 className={styles.pageTitle}>{title}</h1>
+      <div className={styles.description}>{description}</div>
+
+      <hr className={styles.hr} />
 
       <div className={styles.containerBox}>
         {/* 나머지 입력 요소들 */}
@@ -73,20 +79,29 @@ const App = () => {
             placeholder='HTML 입력'
             className={styles.textAreaField}
           />
-          <button onClick={handleInspect} className={styles.button}>
+          <button onClick={handleInspect} className={styles.button} disabled={!url && !htmlContent}>
             검사하기
           </button>
         </div>
 
-        <CopyBlock text={code} language={language} showLineNumbers={showLineNumbers} highlight={highlight} />
+        <div className={styles.resultContainer}>
+          <CopyBlock
+            text={code}
+            language={language}
+            showLineNumbers={showLineNumbers}
+            highlight={highlight}
+            wrapLongLines={true}
+            customStyle={{ backgroundColor: '#ffdada', width: '1000px', marginBottom: '40px' }}
+          />
 
-        {/* 이미지 및 메시지 데이터 출력 */}
-        {messageData.map((data, index) => (
-          <div key={index} className={styles.imageContainer}>
-            <img src={data.imageSrc} alt={`이미지 ${index + 1}`} />
-            <p>{data.message}</p>
-          </div>
-        ))}
+          {/* 이미지 및 메시지 데이터 출력 */}
+          {messageData.map((data, index) => (
+            <div key={index} className={styles.imageContainer}>
+              <img src={data.imageSrc} alt={`이미지 ${index + 1}`} />
+              <p>{data.message}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
