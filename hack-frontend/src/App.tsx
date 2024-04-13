@@ -13,7 +13,7 @@ const CursorSVG = () => {
 };
 
 const App = () => {
-  const title = '전자 정보 표준 프레임워크 search AI';
+  const title = '전자 정부 표준 프레임워크 Search AI';
 
   const [inputValue, setInputValue] = useState<string>('');
   const [question, setQuestion] = useState<string>('');
@@ -82,7 +82,7 @@ const App = () => {
         <br />
         <div className={styles.inputContainer}>
           {/* 메인 */}
-          <div className={styles.title}>표준프레임워크 개발환경 및 실행환경 JDK 버전</div>
+          <div className={styles.title}>Technical Support</div>
           <div className={styles.article}>
             <div className={styles.questionbox}>
               <div className={styles.icon}>
@@ -97,7 +97,7 @@ const App = () => {
               />
 
               <button className={styles.submit} onClick={onClick} disabled={!inputValue || !completedTyping}>
-                {'>'}
+                검색
               </button>
             </div>
             <div className={styles.yourQuestionContainer}>
