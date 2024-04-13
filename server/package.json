@@ -1,6 +1,22 @@
 {
   "devDependencies": {
     "@types/express": "^4.17.21",
+    "copyfiles": "^2.4.1",
+    "nodemon": "^3.1.0",
+    "rimraf": "^5.0.5",
     "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "moment-timezone": "^0.5.45",
+    "winston": "^3.13.0",
+    "winston-daily-rotate-file": "^5.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rimraf dist && tsc && copyfiles .env dist/ && node dist/index.js",
+    "start": "npm run build"
   }
 }
