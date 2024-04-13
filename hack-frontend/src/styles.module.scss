@@ -35,7 +35,7 @@
 .hr {
   width: 80%;
   height: 1px;
-  background-color: #111;
+  background-color: #f0f2f6;
   margin-bottom: 20px;
 }
 
@@ -52,21 +52,20 @@
 .button {
   margin-bottom: 20px;
   padding: 12px;
-  border: 1px solid #ccc;
   border-radius: 4px;
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
-  color: #555;
-  width: 300px;
-  resize: none;
 }
 
 .inputField,
 .textAreaField {
   width: 100%;
   outline: none;
-  border: 1px solid #ccc;
   border-radius: 12px;
+  background-color: #f0f2f6;
+  border: 1px solid #f0f2f6;
+  resize: none;
+  color: #31333e;
 }
 
 .button {
@@ -80,6 +79,7 @@
   border-radius: 16px;
   font-size: 18px;
   text-align: center;
+  border: none;
 
   &:hover {
     background-color: #282c34;
