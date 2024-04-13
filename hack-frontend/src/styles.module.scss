@@ -1,19 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-.container {
-  display: flex;
-  flex-direction: column;
-  font-family: 'Roboto', sans-serif;
-}
 
-.containerBox {
-  display: flex;
-  flex-direction: column;
-  font-family: 'Roboto', sans-serif;
-  background-color: white;
-  width: 100%; // 또는 다른 값으로 설정할 수 있습니다.
-  margin-bottom: 20px; // 박스 사이의 간격
-}
 
 .pageTitle {
   margin: 40px 0;
@@ -23,91 +10,51 @@
   text-align: center;
 }
 
-.description {
-  margin-bottom: 20px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
-  color: #111;
-  white-space: pre-wrap;
+// 
+
+.board_detail03{
+  border-top: 3px solid #393939;
+  font-family: 'NotoSans', sans-serif;
+}
+
+.board_detail03 .title {
+  padding: 20px;
+  border-bottom: 1px solid #393939;
+  color: #222;
+  font-size: 20px;
   text-align: center;
+  font-weight: bold;
+  unicode-bidi: isolate;
 }
 
-.hr {
-  width: 80%;
-  height: 1px;
-  background-color: #f0f2f6;
-  margin-bottom: 20px;
-}
-
-.inputContainer {
-  padding: 8px 240px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.inputField,
-.textAreaField,
-.button {
-  margin-bottom: 20px;
-  padding: 12px;
-  border-radius: 4px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
-}
-
-.inputField,
-.textAreaField {
-  width: 100%;
-  outline: none;
-  border-radius: 12px;
-  background-color: #f0f2f6;
-  border: 1px solid #f0f2f6;
-  resize: none;
-  color: #31333e;
-}
-
-.button {
-  width: 120px;
-  height: 48px;
-
-  background-color: black;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  border-radius: 16px;
-  font-size: 18px;
+.board_detail03 .info {
+  padding: 17px 0 19px 0;
+  border-bottom: 1px solid #c9c9c9;
+  font-size: 0;
   text-align: center;
-  border: none;
-
-  &:hover {
-    background-color: #282c34;
-  }
-
-  &:disabled {
-    background-color: #ccc;
-    cursor: auto;
-  }
+  background: #f2f2f2;
 }
 
-.textAreaField {
-  height: 150px;
+.board_detail03 .article .question {
+  position: relative;
+  padding: 48px 20px 48px 100px;
+  border-bottom: 1px solid #c9c9c9;
+  color: #222;
+  font-size: 16px;
+  font-weight: 700;
 }
 
-.resultContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
+.board_detail03 .article .answer {
+  position: relative;
+  padding: 48px 0 0 100px;
+  font-size: 16px;
+  line-height: 24px;
 }
 
-.imageContainer {
-  margin-bottom: 20px;
-
-  img {
-    max-width: 100%;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+.input_field {
+  border: none; /* 테두리 제거 */
+  padding: 10px; /* 내부 여백 추가 */
+  font-size: 16px; /* 폰트 크기 설정 */
+  border-radius: 8px; /* 테두리 둥글게 만들기 */
+  margin-bottom: 10px; /* 아래 여백 추가 */
 }
