@@ -1,7 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+.cursor {
+  display: inline-block;
+  width: 16px;
+  animation: flicker 0.5s infinite;
+  margin-bottom: 4px;
+}
 
-.container{
+.displayResponse {
+  white-space: pre-wrap;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
   padding-left: 10%; /* 왼쪽 여백 추가 */
   padding-right: 10%; /* 오른쪽 여백 추가 */
 }
@@ -13,9 +41,9 @@
   text-align: center;
 }
 
-// 
+//
 
-.board_detail03{
+.board_detail03 {
   border-top: 3px solid #393939;
   font-family: 'NotoSans', sans-serif;
 }
@@ -38,7 +66,7 @@
   background: #f2f2f2;
 }
 
-.board_detail03 .article .questionbox{
+.board_detail03 .article .questionbox {
   margin-bottom: 0;
 }
 
