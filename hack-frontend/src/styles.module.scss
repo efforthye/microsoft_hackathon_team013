@@ -42,24 +42,18 @@
   font-size: 20px;
 }
 
-// styles.module.scss add
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 .container {
-  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: 'Roboto', sans-serif;
-  background-color: #f7eaea; // 파스텔톤의 분홍색 배경
 }
 
 .containerBox {
-  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   font-family: 'Roboto', sans-serif;
   background-color: white; // 파스텔톤의 분홍색 배경
   width: 100%; // 또는 다른 값으로 설정할 수 있습니다.
@@ -74,30 +68,54 @@
   color: #333;
 }
 
-.inputField, .textAreaField, .button {
-  margin-bottom: 10px;
-  padding: 8px;
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.inputField,
+.textAreaField,
+.button {
+  margin-bottom: 20px;
+  padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   color: #555;
   width: 300px;
+  resize: none;
+}
+
+.inputField,
+.textAreaField {
+  width: 100%;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+}
+
+.button {
+  width: 120px;
+  height: 48px;
+
+  background-color: black;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 16px;
+  font-size: 18px;
+  text-align: center;
 }
 
 .textAreaField {
   height: 150px;
 }
 
-.button {
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
 .button:hover {
-  background-color: #0056b3;
+  background-color: #282c34;
 }
 
 .imageContainer {

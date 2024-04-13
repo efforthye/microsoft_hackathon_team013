@@ -1,12 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import styles from './styles.module.scss'; // 스타일을 불러옵니다.
+import { useState, useEffect } from 'react';
+import styles from './styles.module.scss';
+import { CopyBlock } from 'react-code-blocks';
 
 interface MessageData {
   message: string;
   imageSrc: string;
 }
 
-const App: React.FC = () => {
+const App = () => {
+  const code = `<div className='App'>
+  <div className={styles.text}>Main page</div>
+  <CopyBlock text={code} language={language} showLineNumbers={props.showLineNumbers} wrapLines />
+  <div className={styles.text}>Main page</div>
+  <img src={logo} alt='logo' />
+  <div className={styles.text}>Main page</div>
+</div>
+`;
+
+  const showLineNumbers = true;
+  const highlight = '2-3';
+
+  const language = 'html';
+
   const [url, setUrl] = useState<string>('');
   const [htmlContent, setHtmlContent] = useState<string>('');
   const [messageData, setMessageData] = useState<MessageData[]>([]);
@@ -40,26 +55,30 @@ const App: React.FC = () => {
       <h1 className={styles.pageTitle}>Team 031</h1>
 
       <div className={styles.containerBox}>
+        {/* 나머지 입력 요소들 */}
+        <br />
+        <br />
+        <div className={styles.inputContainer}>
+          <input
+            type='text'
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            placeholder='웹페이지 링크 입력'
+            className={styles.inputField}
+          />
 
-      {/* 나머지 입력 요소들 */}
-      <br />
-      <br />
-        <input
-          type="text"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-          placeholder="웹페이지 링크 입력"
-          className={styles.inputField}
-        />
-        <textarea
-          value={htmlContent}
-          onChange={(e) => setHtmlContent(e.target.value)}
-          placeholder="HTML 입력"
-          className={styles.textAreaField}
-        />
-        <button onClick={handleInspect} className={styles.button}>
-          검사하기
-        </button>
+          <textarea
+            value={htmlContent}
+            onChange={(e) => setHtmlContent(e.target.value)}
+            placeholder='HTML 입력'
+            className={styles.textAreaField}
+          />
+          <button onClick={handleInspect} className={styles.button}>
+            검사하기
+          </button>
+        </div>
+
+        <CopyBlock text={code} language={language} showLineNumbers={showLineNumbers} highlight={highlight} />
 
         {/* 이미지 및 메시지 데이터 출력 */}
         {messageData.map((data, index) => (
@@ -67,7 +86,6 @@ const App: React.FC = () => {
             <img src={data.imageSrc} alt={`이미지 ${index + 1}`} />
             <p>{data.message}</p>
           </div>
-        
         ))}
       </div>
     </div>
