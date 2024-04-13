@@ -27,31 +27,22 @@ const App = () => {
 			    표준프레임워크 개발환경 및 실행환경 JDK 버전
 		    </div>
 		    <div className={styles.info}>
-          <dl>
-            <dt>작성자</dt>
-            <dd>관리자</dd>
-          </dl>
-          <dl>
-            <dt>작성일자</dt>
-            <dd>2024-01-15</dd>
-          </dl>
-          <dl>
-            <dt>조회수</dt>
-            <dd>734</dd>
-          </dl>
+         
 		    </div>
 		    <div className={styles.article}>
-          <h4 className={styles.question}>
-            <BsQuestionSquareFill size={40} color='orange'/>
-            
-              <input 
-                type="text" 
-                value={inputValue} 
-                onChange={handleChange} 
-                placeholder="여기에 입력하세요" 
-                className={styles.input_field}
-              />
-          </h4>
+          <div className={styles.questionbox}>
+            <h4 className={styles.question}>
+              <BsQuestionSquareFill size={40} color='orange' className={styles.icon}/>
+              
+                <input 
+                  type="text" 
+                  value={inputValue} 
+                  onChange={handleChange} 
+                  placeholder="여기에 입력하세요" 
+                  className={styles.input_field}
+                />
+            </h4>
+          </div>
           <div className={styles.answer}>
             <BsFillChatLeftTextFill size={40} color='green'/>
 
