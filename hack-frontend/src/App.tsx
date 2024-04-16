@@ -13,7 +13,7 @@ const CursorSVG = () => {
 };
 
 const App = () => {
-  const title = '전자 정부 표준 프레임워크 Search AI';
+  const title = 'E프레임마법사';
 
   const [inputValue, setInputValue] = useState<string>('');
   const [question, setQuestion] = useState<string>('');
@@ -30,7 +30,10 @@ const App = () => {
 
     setChatHistory([...chatHistory, { user: 'AI', content: 'AI가 답변중입니다...' }]);
 
-    const englishResult = await axios.get('http://13.124.93.106:8080/api/test', {
+    // const ip = 'http://13.124.93.106:8080';
+    const ip = 'http://10.104.195.220:8080';
+
+    const englishResult = await axios.get(`${ip}/api/test`, {
       params: {
         text: inputValue,
       },
@@ -39,7 +42,7 @@ const App = () => {
     const englishResultData = englishResult.data.data.choices.map((choice: any) => choice.message.content).join('\n');
 
     const res = (
-      await axios.get('http://13.124.93.106:8080/api/translate', {
+      await axios.get(`${ip}/api/translate`, {
         params: {
           text: englishResultData,
         },
@@ -82,7 +85,7 @@ const App = () => {
         <br />
         <div className={styles.inputContainer}>
           {/* 메인 */}
-          <div className={styles.title}>Technical Support</div>
+          <div className={styles.title}>전자 정부 표준 프레임워크 Search AI</div>
           <div className={styles.article}>
             <div className={styles.questionbox}>
               <div className={styles.icon}>
